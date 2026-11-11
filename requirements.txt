@@ -1,0 +1,10 @@
+# Barcha botlar uchun bitta umumiy muhit (xotirani tejash: kutubxonalar bir marta yuklanadi)
+aiogram==3.26.0
+aiohttp>=3.9,<4
+APScheduler==3.11.0
+aiosqlite==0.22.1
+firebase-admin==6.6.0
+psycopg2-binary==2.9.10
+psycopg[binary]==3.3.4
+python-dotenv==1.0.1
+reportlab==4.2.5

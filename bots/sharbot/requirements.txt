@@ -1,0 +1,4 @@
+aiogram==3.26.0
+aiosqlite==0.22.1
+psycopg[binary]==3.3.4
+python-dotenv==1.0.1
