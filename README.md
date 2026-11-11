@@ -41,3 +41,9 @@ avtomatik o'tmaydi.
 python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 .venv/bin/python -m pytest -q tests
 ```
+
+### oldiberdi (Qarz-oldi-berdi-bot) — prefiks `OLDIBERDI__`
+Majburiy: `BOT_TOKEN`, `ADMIN_IDS`, `FIREBASE_DB_URL`, `FIREBASE_CREDENTIALS_JSON` (to'liq JSON).
+Ixtiyoriy: `BOT_USERNAME`, `REMINDER_INTERVAL_DAYS`, `REMINDER_CHECK_INTERVAL_HOURS`,
+`ESKIZ_EMAIL`, `ESKIZ_PASSWORD`, `ESKIZ_FROM`, `SMS_GATEWAY_URL`, `SMS_GATEWAY_LOGIN`, `SMS_GATEWAY_PASSWORD`,
+`TELEGRAM_API_ID`, `TELEGRAM_API_HASH`, `TELEGRAM_SESSION_STRING`.

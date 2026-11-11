@@ -44,6 +44,7 @@ BOTS = (
     BotSpec("korzinka", "KORZINKA", "main.py"),
     BotSpec("sharbot", "SHARBOT", "main.py"),
     BotSpec("taqvim", "TAQVIM", "bot.py"),
+    BotSpec("oldiberdi", "OLDIBERDI", "bot.py"),   # Qarz-oldi-berdi-bot
 )
 
 # Asosiy jarayonda oldindan yuklanadigan og'ir kutubxonalar (fork'dan keyin bo'lishiladi)
@@ -53,7 +54,7 @@ PRELOAD = (
     "aiohttp", "aiohttp.web", "pydantic", "firebase_admin", "firebase_admin.db", "firebase_admin.credentials",
     "firebase_admin.firestore", "google.cloud.firestore",
     "reportlab.pdfgen.canvas", "reportlab.pdfbase.ttfonts", "reportlab.lib.pagesizes",
-    "psycopg2", "psycopg", "psycopg.rows", "apscheduler.schedulers.asyncio", "aiosqlite", "dotenv", "sqlite3",
+    "telethon", "psycopg2", "psycopg", "psycopg.rows", "apscheduler.schedulers.asyncio", "aiosqlite", "dotenv", "sqlite3",
 )
 
 # Hamma botga beriladigan umumiy tizim o'zgaruvchilari (maxfiy emas)
