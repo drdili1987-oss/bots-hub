@@ -201,13 +201,17 @@ class Supervisor:
             log.error("[%s] to'xtadi (holat %s, %.0f s ishladi) — %.0f s dan keyin qayta ishga tushadi",
                       spec.name, os.waitstatus_to_exitcode(status), ran, wait)
 
-    def run(self) -> int:
+    def run(self, idle_without_bots: bool = False) -> int:
         specs = self.enabled()
-        if not specs:
-            log.error("Hech bir botning tokeni berilmagan. Render > Environment: QARZ__BOT_TOKEN va h.k.")
-            return 1
         signal.signal(signal.SIGTERM, self._on_term)
         signal.signal(signal.SIGINT, self._on_term)
+        if not specs:
+            log.error("Hech bir botning tokeni berilmagan. Render > Environment: QARZ__BOT_TOKEN va h.k.")
+            if not idle_without_bots:
+                return 1
+            while not self.stopping:  # web service yiqilib qayta-qayta deploy bo'lmasin
+                time.sleep(1)
+            return 0
         preload()
         log.info("Ishga tushiriladigan botlar: %s", ", ".join(s.name for s in specs))
         by_name = {s.name: s for s in specs}
@@ -225,9 +229,37 @@ class Supervisor:
         return 0
 
 
+def start_health_server(sup: "Supervisor", port: int) -> None:
+    """Render Web Service port kutadi: `/` va `/health` — qaysi botlar ishlayotgani. Faqat stdlib."""
+    from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+    class H(BaseHTTPRequestHandler):
+        def do_GET(self):  # noqa: N802
+            names = sorted(spec.name for spec, _ in list(sup.running.values()))
+            body = ("ok: " + (", ".join(names) or "botlar yoqilmagan")).encode()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+
+        do_HEAD = do_GET
+
+        def log_message(self, *_):
+            pass
+
+    srv = ThreadingHTTPServer(("0.0.0.0", port), H)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    log.info("Health server: :%s", port)
+
+
 def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s launcher %(levelname)s %(message)s", stream=sys.stdout)
-    return Supervisor(BOTS, dict(os.environ)).run()
+    sup = Supervisor(BOTS, dict(os.environ))
+    port = os.environ.get("PORT")
+    if port:  # Render Web Service rejimi
+        start_health_server(sup, int(port))
+    return sup.run(idle_without_bots=bool(port))
 
 
 if __name__ == "__main__":

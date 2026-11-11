@@ -1,4 +1,4 @@
-# bots-hub — 4 ta Telegram bot bitta Render Background Worker'da
+# bots-hub — 4 ta Telegram bot bitta Render Web Service (yoki Background Worker)'da
 
 | Bot | Papka | Sozlama prefiksi |
 |---|---|---|
@@ -12,7 +12,7 @@ ishga tushiradi: 4 bot ≈ 210 MB (Starter 512 MB ga bemalol sig'adi). Yiqilgan 
 boshqalariga ta'sir qilmaydi. Hamma bot polling rejimida ishlaydi.
 
 ## Render
-- Turi: **Background Worker**, tarif: **Starter ($7)**
+- Turi: **Web Service (yoki Background Worker)**, tarif: **Starter ($7)**
 - Build: `pip install -r requirements.txt`
 - Start: `python launcher.py`
 - `PYTHON_VERSION=3.11.9`
