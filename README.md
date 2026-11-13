@@ -47,3 +47,8 @@ Majburiy: `BOT_TOKEN`, `ADMIN_IDS`, `FIREBASE_DB_URL`, `FIREBASE_CREDENTIALS_JSO
 Ixtiyoriy: `BOT_USERNAME`, `REMINDER_INTERVAL_DAYS`, `REMINDER_CHECK_INTERVAL_HOURS`,
 `ESKIZ_EMAIL`, `ESKIZ_PASSWORD`, `ESKIZ_FROM`, `SMS_GATEWAY_URL`, `SMS_GATEWAY_LOGIN`, `SMS_GATEWAY_PASSWORD`,
 `TELEGRAM_API_ID`, `TELEGRAM_API_HASH`, `TELEGRAM_SESSION_STRING`.
+
+### swe (SWE oylik test boti) — prefiks `SWE__`
+Majburiy: `BOT_TOKEN`, `ADMIN_IDS`. Natijalar uchun: `SUPABASE_URL`, `SUPABASE_KEY`, `DB_SECRET`.
+Kod: `bots/swe` (python-telegram-bot, polling). Batafsil: `bots/swe/README.md`.
+Eslatma: bot shu yerda yoqilgach, Render'dagi eski `swe-test-bot` xizmatini to'xtating (Suspend).
