@@ -9,8 +9,3 @@ psycopg[binary]==3.3.4
 python-dotenv==1.0.1
 reportlab==4.2.5
 telethon==1.36.0
-# swe (SWE oylik test boti)
-python-telegram-bot==22.8
-arabic-reshaper==3.1.0
-python-bidi==0.6.12
-pillow>=10.1
